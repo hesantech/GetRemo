@@ -19,6 +19,7 @@ teset.com,ec2-user,/home/user/privatekey.pem,whoami,cat /etc/hosts,uptime
 import paramiko
 import sys
 import csv
+import time
 from datetime import datetime
 
 class RemoteSSHExecute:
@@ -43,6 +44,8 @@ class RemoteSSHExecute:
 
     def ssh_connect(self):
         try:
+            print(f"Connecting to the Host: {self.rhost}\n")
+            time.sleep(2)
             self.ssh = paramiko.SSHClient()
             self.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
             if not self.passwd:
